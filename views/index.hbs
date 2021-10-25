@@ -1,0 +1,95 @@
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <link rel='stylesheet' href='css/simple-grid-min.css' />
+    <link rel='stylesheet' href='css/registration_number.css' />
+    <script src='/timedOut.js'></script>
+    <title>Registration Number</title>
+  </head>
+  <body>
+    <div class='row'>
+      <div class='col-12'>
+        <div class='container'>
+          <div class='row'>
+            <div class='col-12'>
+              <h2 style='text-align: center'>
+                <strong style='color: black'>Registration Numbers</strong>
+              </h2>
+            </div>
+          </div>
+          <div class='row'>
+            <div style='text-align: center' class='col-12'>
+              {{! <span class='error'></span> }}
+              {{#if messages.info}}
+                <span class='entry'>
+                  <h4 class='error'> {{messages.info}}</h4>
+                </span>
+              {{/if}}
+            </div>
+          </div>
+          <br />
+          <div class='row'>
+            <form action='/reg_numbers' method='POST'>
+              <div class='col-10'>
+                <input
+                  name='regNumber'
+                  type='text'
+                  class='text-input'
+                  placeholder='Please enter registration number eg: CA 123456'
+                />
+              </div>
+              <div class='col-2'>
+                <button
+                  type='submit'
+                  class='add-btn'
+                  name='button'
+                  value='add'
+                >Add</button>
+              </div>
+            </form>
+          </div>
+          <br />
+          <br />
+          <div class='row'>
+            <div class='col-10'>
+              <form action='/reg_numbers:town' method='GET'>
+                <label>Filter by Town:</label>
+                <select name='town' class='town'>
+                  <option name='townAll' value='all'>Select Town</option>
+                  <option name='town1' value='CA'>Cape Town</option>
+                  <option name='town2' value='CJ'>Paarl</option>
+                  <option name='town3' value='CY'>Bellville</option>
+                </select>
+                <button type='submit' class='reset-btn'>Search Town</button>
+              </form>
+            </div>
+            <form action='/reset' method='POST'>
+              <div class='col-2'>
+                <button
+                  type='submit'
+                  name='button'
+                  value='reset'
+                  class='reset-btn'
+                >Reset</button>
+              </div>
+            </form>
+          </div>
+          <div class='row'>
+            <div style='text-align: center' class='col-12'>
+              <span id='message'>
+                {{#each registrationList}}
+                  {{this.registration_number}}
+                {{/each}}
+
+                {{!-- {{#filter filterBy}}{{this.registration_number}}{{/filter}} --}}
+              </span>
+            </div>
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+  </body>
+</html>
