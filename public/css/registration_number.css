@@ -111,15 +111,28 @@ body{
       box-shadow: 10px 10px 15px #be7c00;
     }
 
+    .show-town {
+      border-radius: 15px;
+      display: block;
+      width: 25%;
+      border: none;
+      background-color: #eede01;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+      letter-spacing: 2.5px;
+      box-shadow: 10px 10px 15px #be7c00;
+    }
+
     .error {
         color: red;
     }
 
     .town {
         background-color: #eede01;
-        box-shadow: 10px 10px 15px #be7c00;
+        box-shadow: 1px 1px 0.5px;
         border-radius: 15px;
-        color: black;
         padding: 10px 20px;
         font-size: 16px;
         letter-spacing: 2.5px;
@@ -135,4 +148,11 @@ body{
         background-color: silver;
         border: 2px solid black;
         margin: 0 1em 1em;
+    }
+
+    #message {
+      border-radius: 0.7em;
+      background-color: rgb(202, 202, 202);
+      color: black;
+      border: 2px solid black;
     }

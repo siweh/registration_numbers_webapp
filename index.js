@@ -20,7 +20,7 @@ if (process.env.DATABASE_URL && !local) {
 // which db connection to use
 const connectionString =
   process.env.DATABASE_URL ||
-  'postgresql://sibu:pg1234@localhost:5432/registration_numbers_db';
+  'postgresql://siweh:pg1234@localhost:5432/registration_numbers_db';
 
 const pool = new Client({
   connectionString,

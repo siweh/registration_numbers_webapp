@@ -22,11 +22,11 @@
           <div class='row'>
             <div style='text-align: center' class='col-12'>
               {{! <span class='error'></span> }}
-              {{#if messages.info}}
-                <span class='entry'>
-                  <h4 class='error'> {{messages.info}}</h4>
-                </span>
-              {{/if}}
+              {{!-- {{#if messages.info}} --}}
+              <span class='entry'>
+                <h3 class='error'> {{messages.info}}</h3>
+              </span>
+              {{!-- {{/if}} --}}
             </div>
           </div>
           <br />
@@ -55,14 +55,14 @@
           <div class='row'>
             <div class='col-10'>
               <form action='/reg_numbers:town' method='GET'>
-                <label>Filter by Town:</label>
+                <label>Filter Town:</label>
                 <select name='town' class='town'>
                   <option name='townAll' value='all'>Select Town</option>
                   <option name='town1' value='CA'>Cape Town</option>
                   <option name='town2' value='CJ'>Paarl</option>
                   <option name='town3' value='CY'>Bellville</option>
                 </select>
-                <button type='submit' class='reset-btn'>Search Town</button>
+                <button type='submit' class='show-town'>Search Town</button>
               </form>
             </div>
             <form action='/reset' method='POST'>
@@ -76,15 +76,15 @@
               </div>
             </form>
           </div>
+          <br />
+          <br />
           <div class='row'>
             <div style='text-align: center' class='col-12'>
-              <span id='message'>
-                {{#each registrationList}}
+              {{#each registrationList}}
+                <span id='message' style='padding: 5px; margin:5px'>
                   {{this.registration_number}}
-                {{/each}}
-
-                {{!-- {{#filter filterBy}}{{this.registration_number}}{{/filter}} --}}
-              </span>
+                </span>
+              {{/each}}
             </div>
           </div>
         </div>

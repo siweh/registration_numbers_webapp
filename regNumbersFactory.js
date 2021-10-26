@@ -2,23 +2,25 @@ module.exports = function RegNumbersFactory(pool) {
   //var registrationNumbers = [];
   var errMessage = '';
   async function addRegNumbers(reg) {
-    // try {
-    let townId = await getTownId(reg.substring(0, 2));
-    const query = await pool.query(
-      `INSERT INTO registration_numbers (registration_number, town_id)
+    try {
+      let townId = await getTownId(reg.substring(0, 2));
+      const query = await pool.query(
+        `INSERT INTO registration_numbers (registration_number, town_id)
                 VALUES ($1, $2)`,
-      [reg, townId]
-    );
-    console.log('Data saved successful');
-    if (reg.length > 8) {
-      reg = '';
-      errMessage = 'Registration number should not be this long';
-    } else if (reg.length < 8) {
-      reg = '';
-      errMessage = 'Registration contains atleast 6 digits';
-    } else if (reg === '') {
-      reg = '';
-      errMessage = 'Please enter registration number';
+        [reg, townId]
+      );
+      console.log('Data saved successful');
+      // if (reg.length > 8) {
+      //   reg = '';
+      //   errMessage = 'Registration number should not be this long';
+      // } else if (reg.length < 8) {
+      //   reg = '';
+      //   errMessage = 'Registration contains atleast 6 digits';
+      // } else if (reg === '') {
+      //   errMessage = 'Please enter registration number';
+      // }
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -69,6 +71,12 @@ module.exports = function RegNumbersFactory(pool) {
       [town_value]
     );
     //console.log(results.rows);
+    return results.rows;
+  }
+
+  async function filterByAll() {
+    const results = await pool.query(`SELECT * FROM registration_numbers`);
+    //console.log(results);
     return results.rows;
   }
 
@@ -128,6 +136,7 @@ module.exports = function RegNumbersFactory(pool) {
     getTown,
     getAllTowns,
     filteringByTownTag,
+    filterByAll,
     getErrorMessage,
   };
 };
