@@ -28,9 +28,7 @@ const connectionString = process.env.DATABASE_URL;
 
 const pool = new Client({
   connectionString,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  ssl: true,
 });
 
 let regNumber = RegNumbersFactory(pool);
