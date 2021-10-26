@@ -24,7 +24,9 @@ if (process.env.DATABASE_URL && !local) {
 // console.log(process.env.DATABASE_URL);
 // console.log(process.env);
 // which db connection to use
-const connectionString = process.env.DATABASE_URL;
+//const connectionString = process.env.DATABASE_URL;
+const connectionString =
+  'postgres://npupycqfaqevnx:4f73b6bb87fc6da171a1bb5c6717f8ffeb9a0e7b566c89f66906fc666e4e2c78@ec2-54-210-226-209.compute-1.amazonaws.com:5432/d1qh9hmp12n4b0';
 
 const pool = new Client({
   connectionString,
