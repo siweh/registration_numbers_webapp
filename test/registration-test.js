@@ -63,10 +63,7 @@ describe('Registration numbers webapp database', function () {
 
   it('should be able to get all town', async function () {
     const reg_numbers = RegNumbersFactory(pool);
-    await reg_numbers.getTown('cape town');
-    await reg_numbers.getTown('paarl');
-    await reg_numbers.getTown('bellville');
     let allTowns = await reg_numbers.getAllTowns();
-    assert.equal(3, allTowns.rows.length);
+    assert.equal(3, allTowns.length);
   });
 });

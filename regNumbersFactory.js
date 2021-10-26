@@ -33,7 +33,9 @@ module.exports = function RegNumbersFactory(pool) {
   }
 
   async function getTown(town) {
-    const query = pool.query(`SELECT * FROM towns WHERE town = $1`, [town]);
+    const query = await pool.query(`SELECT * FROM towns WHERE town = $1`, [
+      town,
+    ]);
 
     // var results = await client.query(query);
     // await client.end();
@@ -41,7 +43,7 @@ module.exports = function RegNumbersFactory(pool) {
   }
 
   async function getAllTowns() {
-    const results = pool.query(`SELECT * FROM towns`);
+    const results = await pool.query(`SELECT * FROM towns`);
     return results.rows;
   }
 

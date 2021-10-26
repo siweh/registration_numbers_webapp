@@ -1,6 +1,7 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
+require('dotenv').config();
 const flash = require('express-flash');
 const session = require('express-session');
 const FactoryFunctionsRoutes = require('./routes/routes');
@@ -16,15 +17,20 @@ let useSSL = false;
 let local = process.env.LOCAL || false;
 if (process.env.DATABASE_URL && !local) {
   useSSL = true;
+  console.log('im herreeeeeee');
 }
+
+// console.log(local);
+// console.log(process.env.DATABASE_URL);
+// console.log(process.env);
 // which db connection to use
-const connectionString =
-  process.env.DATABASE_URL ||
-  'postgresql://siweh:pg1234@localhost:5432/registration_numbers_db';
+const connectionString = process.env.DATABASE_URL;
 
 const pool = new Client({
   connectionString,
-  ssl: useSSL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 let regNumber = RegNumbersFactory(pool);
