@@ -14,13 +14,13 @@ module.exports = function FactoryFunctionsRoutes(registrations) {
     console.log(town);
 
     if (town !== undefined && town !== '') {
-      let filter = await registrations.filteringByTownTag(town);
+      let filter = [];
       //console.log(filter);
       if (town === 'all') {
-        let filterAll = await registrations.filterByAll();
-        console.log(filterAll);
+        filter = await registrations.filterByAll();
+        //console.log(filter);
       } else {
-        filter;
+        filter = await registrations.filteringByTownTag(town);
       }
       res.render('index', { registrationList: filter });
       return;
