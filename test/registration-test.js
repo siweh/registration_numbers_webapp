@@ -1,18 +1,40 @@
 const assert = require('assert');
+require('dotenv').config();
 const RegNumbersFactory = require('./../regNumbersFactory');
 const { Pool } = require('pg');
 
+// const Client = Pool;
+
+// const connectionString = process.env.DATABASE_URL;
+
+// const pool = new Pool({
+//   connectionString: connectionString,
+//   ssl: {
+//     rejectUnauthorized: false,
+//   },
+// });
+
 const Client = Pool;
 
-const connectionString =
-  process.env.DATABASE_URL ||
-  'postgresql://sibu:pg1234@localhost:5432/registration_numbers_db';
+//should we use a SSL connection
+let useSSL = false;
+let local = process.env.LOCAL || false;
+if (process.env.DATABASE_URL && !local) {
+  useSSL = true;
+  console.log('im herreeeeeee');
+}
 
-const pool = new Pool({
-  connectionString: connectionString,
-  //   ssl: {
-  //     rejectUnauthorized: false,
-  //   },
+// console.log(local);
+// console.log(process.env.DATABASE_URL);
+// console.log(process.env);
+// which db connection to use
+const connectionString = process.env.DATABASE_URL;
+
+const pool = new Client({
+  connectionString,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 describe('Registration numbers webapp database', function () {

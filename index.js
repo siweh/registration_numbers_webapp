@@ -20,24 +20,18 @@ if (process.env.DATABASE_URL && !local) {
   console.log('im herreeeeeee');
 }
 
-const dbCredentials = {
-  user: 'npupycqfaqevnx',
-  password: '4f73b6bb87fc6da171a1bb5c6717f8ffeb9a0e7b566c89f66906fc666e4e2c78',
-  host: 'ec2-54-210-226-209.compute-1.amazonaws.com',
-  port: 5432,
-  database: 'd1qh9hmp12n4b0',
-  ssl: {
-    rejectUnauthorized: false,
-  },
-};
-
 // console.log(local);
 // console.log(process.env.DATABASE_URL);
 // console.log(process.env);
 // which db connection to use
 const connectionString = process.env.DATABASE_URL;
 
-const pool = new Client(dbCredentials);
+const pool = new Client({
+  connectionString,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
 
 let regNumber = RegNumbersFactory(pool);
 
