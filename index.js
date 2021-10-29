@@ -17,13 +17,8 @@ let useSSL = false;
 let local = process.env.LOCAL || false;
 if (process.env.DATABASE_URL && !local) {
   useSSL = true;
-  console.log('im herreeeeeee');
 }
 
-// console.log(local);
-// console.log(process.env.DATABASE_URL);
-// console.log(process.env);
-// which db connection to use
 const connectionString = process.env.DATABASE_URL;
 
 const pool = new Client({

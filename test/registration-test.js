@@ -3,17 +3,6 @@ require('dotenv').config();
 const RegNumbersFactory = require('./../regNumbersFactory');
 const { Pool } = require('pg');
 
-// const Client = Pool;
-
-// const connectionString = process.env.DATABASE_URL;
-
-// const pool = new Pool({
-//   connectionString: connectionString,
-//   ssl: {
-//     rejectUnauthorized: false,
-//   },
-// });
-
 const Client = Pool;
 
 //should we use a SSL connection
@@ -24,10 +13,6 @@ if (process.env.DATABASE_URL && !local) {
   console.log('im herreeeeeee');
 }
 
-// console.log(local);
-// console.log(process.env.DATABASE_URL);
-// console.log(process.env);
-// which db connection to use
 const connectionString = process.env.DATABASE_URL;
 
 const pool = new Client({
@@ -48,7 +33,7 @@ describe('Registration numbers webapp database', function () {
     const reg_numbers = RegNumbersFactory(pool);
     await reg_numbers.addRegNumbers('CA123456');
     let regNo = await reg_numbers.getRegistrations();
-    console.log(regNo);
+    //console.log(regNo);
     assert.equal('CA123456', regNo[0].registration_number);
   });
 
@@ -60,7 +45,7 @@ describe('Registration numbers webapp database', function () {
     await reg_numbers.addRegNumbers('CY123456');
     await reg_numbers.getRegistrations();
     let filter = await reg_numbers.filteringByTownTag('CA');
-    console.log(filter);
+    //console.log(filter);
     assert.equal(2, filter.length);
   });
 

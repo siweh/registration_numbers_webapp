@@ -36,24 +36,24 @@ body{
     display: block;
     width: 100%;
     border: none;
-    background-color: #eede01;
+    background-color: #ee9301;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
     text-align: center;
     letter-spacing: 2.5px;
-    box-shadow: 10px 10px 15px #be7c00;
+    box-shadow: 10px 10px 15px #be4c00;
 }
 
 .add-btn:hover {
-    background-color: #ffeb64;
-    box-shadow: 0px 15px 20px #cc9200;
+    background-color: #c85d3c;
+    box-shadow: 0px 15px 20px #cc5200;
     color: black;
     /* transform: translateY(-7px); */
   }
 
 .dropbtn {
-    background-color: #eede01;
+    background-color: #eea301;
     box-shadow: 10px 10px 15px #be7c00;
     border-radius: 15px;
     color: black;
@@ -102,13 +102,13 @@ body{
       display: block;
       width: 100%;
       border: none;
-      background-color: #eede01;
+      background-color: #ee9301;
       padding: 10px 20px;
       font-size: 16px;
       cursor: pointer;
       text-align: center;
       letter-spacing: 2.5px;
-      box-shadow: 10px 10px 15px #be7c00;
+      box-shadow: 10px 10px 15px #be4c00;
     }
 
     .show-town {
@@ -116,13 +116,13 @@ body{
       display: block;
       width: 25%;
       border: none;
-      background-color: #eede01;
+      background-color: #ee9301;
       padding: 10px 20px;
       font-size: 16px;
       cursor: pointer;
       text-align: center;
       letter-spacing: 2.5px;
-      box-shadow: 10px 10px 15px #be7c00;
+      box-shadow: 10px 10px 15px #be4c00;
     }
 
     .error {
@@ -130,13 +130,14 @@ body{
     }
 
     .town {
-        background-color: #eede01;
+        background-color: #ee9301;
         box-shadow: 1px 1px 0.5px;
         border-radius: 15px;
         padding: 10px 20px;
         font-size: 16px;
         letter-spacing: 2.5px;
         border: none;
+        box-shadow: 10px 10px 15px #be4c00;
     }
     .chip {
         display: inline-block;

@@ -1,9 +1,5 @@
 module.exports = function FactoryFunctionsRoutes(registrations) {
   async function home(req, res) {
-    // let errors = registrations.getErrorMessage();
-    // req.flash('info', errors);
-    //console.log(errors);
-
     let regNumbersDisplay = await registrations.getRegistrations();
     res.render('index', { registrationList: regNumbersDisplay });
   }
@@ -29,8 +25,6 @@ module.exports = function FactoryFunctionsRoutes(registrations) {
   }
   async function addRegNumbers(req, res) {
     let regNum = req.body.regNumber;
-    // let duplicates = regNum.slice().sort();
-    //console.log(regNum);
     if (regNum === '') {
       req.flash('info', 'Please enter registration number');
       res.render('index');
@@ -60,7 +54,8 @@ module.exports = function FactoryFunctionsRoutes(registrations) {
   async function reset(req, res) {
     if (req.body.button === 'reset') {
       await registrations.deleteRegNo();
-      res.redirect('/');
+      req.flash('info', 'Registration numbers deleted');
+      res.render('index');
     }
   }
 
